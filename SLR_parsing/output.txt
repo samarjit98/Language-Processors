@@ -1,0 +1,189 @@
+
+
+First for: E -  ( d
+First for: T+E -  ( d
+First for: T -  ( d
+First for: F*T -  ( d
+First for: F -  ( d
+First for: (E) -  (
+First for: d -  d
+
+
+Follow for: A -  $
+Follow for: E -  $ )
+Follow for: E -  $ )
+Follow for: T -  $ ) +
+Follow for: T -  $ ) +
+Follow for: F -  $ ) * +
+Follow for: F -  $ ) * +
+
+Itemsets:
+
+
+   ---------------------------------
+	I-0:
+
+	  A->.E
+	  E->.T
+	  T->.F
+	  F->.d
+	  F->.(E)
+	  T->.F*T
+	  E->.T+E
+   ---------------------------------
+
+
+   ---------------------------------
+	I-1:
+
+	  F->(.E)
+	  E->.T
+	  T->.F
+	  F->.d
+	  F->.(E)
+	  T->.F*T
+	  E->.T+E
+   ---------------------------------
+
+
+   ---------------------------------
+	I-2:
+
+	  A->E.
+   ---------------------------------
+
+
+   ---------------------------------
+	I-3:
+
+	  T->F.*T
+	  T->F.
+   ---------------------------------
+
+
+   ---------------------------------
+	I-4:
+
+	  E->T.+E
+	  E->T.
+   ---------------------------------
+
+
+   ---------------------------------
+	I-5:
+
+	  F->d.
+   ---------------------------------
+
+
+   ---------------------------------
+	I-6:
+
+	  E->T+.E
+	  E->.T
+	  T->.F
+	  F->.d
+	  F->.(E)
+	  T->.F*T
+	  E->.T+E
+   ---------------------------------
+
+
+   ---------------------------------
+	I-7:
+
+	  E->T+E.
+   ---------------------------------
+
+
+   ---------------------------------
+	I-8:
+
+	  T->F*.T
+	  T->.F
+	  F->.d
+	  F->.(E)
+	  T->.F*T
+   ---------------------------------
+
+
+   ---------------------------------
+	I-9:
+
+	  T->F*T.
+   ---------------------------------
+
+
+   ---------------------------------
+	I-10:
+
+	  F->(E.)
+   ---------------------------------
+
+
+   ---------------------------------
+	I-11:
+
+	  F->(E).
+   ---------------------------------
+
+
+Go to computations:
+
+	GOTO[0, (] = 1
+	GOTO[0, E] = 2
+	GOTO[0, F] = 3
+	GOTO[0, T] = 4
+	GOTO[0, d] = 5
+	GOTO[1, (] = 1
+	GOTO[1, E] = 10
+	GOTO[1, F] = 3
+	GOTO[1, T] = 4
+	GOTO[1, d] = 5
+	GOTO[3, *] = 8
+	GOTO[4, +] = 6
+	GOTO[6, (] = 1
+	GOTO[6, E] = 7
+	GOTO[6, F] = 3
+	GOTO[6, T] = 4
+	GOTO[6, d] = 5
+	GOTO[8, (] = 1
+	GOTO[8, F] = 3
+	GOTO[8, T] = 9
+	GOTO[8, d] = 5
+	GOTO[10, )] = 11
+
+Actions in parsing table:
+
+	ACTION[0, (] = shift 1
+	ACTION[0, d] = shift 5
+	ACTION[1, (] = shift 1
+	ACTION[1, d] = shift 5
+	ACTION[2, $] = reduce A->E
+	ACTION[3, $] = reduce T->F
+	ACTION[3, )] = reduce T->F
+	ACTION[3, *] = shift 8
+	ACTION[3, +] = reduce T->F
+	ACTION[4, $] = reduce E->T
+	ACTION[4, )] = reduce E->T
+	ACTION[4, +] = shift 6
+	ACTION[5, $] = reduce F->d
+	ACTION[5, )] = reduce F->d
+	ACTION[5, *] = reduce F->d
+	ACTION[5, +] = reduce F->d
+	ACTION[6, (] = shift 1
+	ACTION[6, d] = shift 5
+	ACTION[7, $] = reduce E->T+E
+	ACTION[7, )] = reduce E->T+E
+	ACTION[8, (] = shift 1
+	ACTION[8, d] = shift 5
+	ACTION[9, $] = reduce T->F*T
+	ACTION[9, )] = reduce T->F*T
+	ACTION[9, +] = reduce T->F*T
+	ACTION[10, )] = shift 11
+	ACTION[11, $] = reduce F->(E)
+	ACTION[11, )] = reduce F->(E)
+	ACTION[11, *] = reduce F->(E)
+	ACTION[11, +] = reduce F->(E)
+
+
