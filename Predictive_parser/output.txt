@@ -1,0 +1,38 @@
+
+
+First for: TA -  ( d
+First for: +TA -  +
+First for: 0 -  0
+First for: FB -  ( d
+First for: *FB -  *
+First for: 0 -  0
+First for: (E) -  (
+First for: d -  d
+
+
+Follow for: E -  $ )
+Follow for: A -  $ )
+Follow for: A -  $ )
+Follow for: T -  $ ) +
+Follow for: B -  $ ) +
+Follow for: B -  $ ) +
+Follow for: F -  $ ) * +
+Follow for: F -  $ ) * +
+
+Parsing table:
+
+	ENTRY[A, $] = A->0
+	ENTRY[A, )] = A->0
+	ENTRY[A, +] = A->+TA
+	ENTRY[B, $] = B->0
+	ENTRY[B, )] = B->0
+	ENTRY[B, *] = B->*FB
+	ENTRY[B, +] = B->0
+	ENTRY[E, (] = E->TA
+	ENTRY[E, d] = E->TA
+	ENTRY[F, (] = F->(E)
+	ENTRY[F, d] = F->d
+	ENTRY[T, (] = T->FB
+	ENTRY[T, d] = T->FB
+
+

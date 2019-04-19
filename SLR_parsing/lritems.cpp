@@ -192,9 +192,9 @@ void find_follow(char nont, set<char> &follow_set, vector<bool> &visited){
 						find_first(beta, first_set);
 
 						set<char>::iterator it;
-						for(it=first_set.begin(); it!=first_set.end(); it++)follow_set.insert(*it);
+						for(it=first_set.begin(); it!=first_set.end(); it++)if(*it!='0')follow_set.insert(*it);
 
-						if(first_set.find('0')==first_set.end()){
+						if(first_set.find('0')!=first_set.end()){
 							if(nont!=productions[i].first){
 								if(follows.find(productions[i].first)==follows.end()){
 									set<char> tmp_follow_set;
