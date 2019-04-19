@@ -156,17 +156,50 @@ void build_table(){
 	}
 }
 
+void parse(){
+	string w;
+	cin>>w;
+
+	int i=0;
+	stack<char> s; s.push('$'); s.push('E');
+
+	while(s.top()!='$'){
+		if(s.top()==w[i]){
+			s.pop(); fout<<"match "<<w[i]<<endl; i++;
+		}
+		else if(!(s.top()<='Z' && s.top()>='A') && s.top()!='$'){
+			fout<<"Error1()"<<endl; return;
+		}
+		else if(i<w.size() && table.find(make_pair(s.top(), w[i]))==table.end()){
+			fout<<"Error2()"<<endl; return;
+		}
+		else{
+			pair<char, string> curr_prod;
+			if(i<w.size())curr_prod = table[make_pair(s.top(), w[i])];
+			else curr_prod = table[make_pair(s.top(), '$')];
+			fout<<curr_prod.first<<"->"<<curr_prod.second<<endl;
+			s.pop();
+			if(curr_prod.second!="0"){
+				reverse(curr_prod.second.begin(), curr_prod.second.end());
+				for(int k=0; k<curr_prod.second.size(); k++)s.push(curr_prod.second[k]);
+			}
+		}
+	}
+}
+
 int main(){
+	ifstream fin("input.txt", ios::in);
 	int n; 
-	cout<<"Enter number of productions:"; cin>>n;
+	cout<<"Enter number of productions:"; fin>>n;
 
 	while(n--){
 		char lhs; string rhs; 
-		cout<<"Enter lhs:"; cin>>lhs;
-		cout<<"Enter rhs:"; cin>>rhs;
+		cout<<"Enter lhs:"; fin>>lhs;
+		cout<<"Enter rhs:"; fin>>rhs;
 		productions.push_back(make_pair(lhs, rhs));
 		cout<<endl;
 	}
+	fin.close();
 	
 	build_first();
 	build_follow();
@@ -181,6 +214,7 @@ int main(){
 	}
 
 	fout<<"\n\n";
+	parse();
 	return 0;
 }
 
@@ -211,4 +245,21 @@ Enter rhs:(E)
 Enter lhs:F
 Enter rhs:d`
 
+8
+E
+TA
+A
++TA
+A
+0
+T
+FB
+B
+*FB
+B
+0
+F
+(E)
+F
+d
 */

@@ -36,3 +36,19 @@ Parsing table:
 	ENTRY[T, d] = T->FB
 
 
+E->TA
+T->FB
+F->d
+match d
+B->0
+A->+TA
+match +
+T->FB
+F->d
+match d
+B->*FB
+match *
+F->d
+match d
+B->0
+A->0
