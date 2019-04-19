@@ -110,11 +110,9 @@ void find_first(string arg, set<char> &first_set){
 		for(int i=0; i<arg.size(); i++){
 			int flag=0;
 			if(!(arg[i]<='Z' && arg[i]>='A')){
-				//cout<<arg<<" "<<arg[i]<<endl;
 				first_set.insert(arg[0]); return;
 			}
 			else{
-				//cout<<arg<<" "<<arg[i]<<endl;
 				set<char> tmp_first_vec;
 				vector<pair<char, string> > lhs_matched;
 
@@ -172,7 +170,6 @@ void find_follow(char nont, set<char> &follow_set, vector<bool> &visited){
 						if(nont!=productions[i].first){
 							if(follows.find(productions[i].first)==follows.end()){
 								set<char> tmp_follow_set;
-								//vector<bool> tmp_visited(productions.size(), false);
 								find_follow(productions[i].first, tmp_follow_set, visited);
 								follows[productions[i].first] = tmp_follow_set;
 								set<char>::iterator it;
@@ -201,7 +198,6 @@ void find_follow(char nont, set<char> &follow_set, vector<bool> &visited){
 							if(nont!=productions[i].first){
 								if(follows.find(productions[i].first)==follows.end()){
 									set<char> tmp_follow_set;
-									//vector<bool> tmp_visited(productions.size(), false);
 									find_follow(productions[i].first, tmp_follow_set, visited);
 									follows[productions[i].first] = tmp_follow_set;
 									for(it=tmp_follow_set.begin(); it!=tmp_follow_set.end(); it++){
