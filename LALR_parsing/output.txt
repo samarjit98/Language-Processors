@@ -1,0 +1,110 @@
+
+
+First for: S -  c d
+First for: CC -  c d
+First for: cC -  c
+First for: d -  d
+
+Itemsets:
+
+
+   ---------------------------------
+	I-0:
+
+	  A -> .S , $
+	  S -> .CC , $
+	  C -> .d , d
+	  C -> .d , c
+	  C -> .cC , d
+	  C -> .cC , c
+   ---------------------------------
+
+
+   ---------------------------------
+	I-1:
+
+	  S -> C.C , $
+	  C -> .d , $
+	  C -> .cC , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-2:
+
+	  A -> S. , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-3:
+
+	  C -> c.C , c
+	  C -> .d , $
+	  C -> .cC , $
+	  C -> c.C , d
+	  C -> c.C , $
+	  C -> .d , $
+	  C -> .cC , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-4:
+
+	  C -> d. , c
+	  C -> d. , d
+	  C -> d. , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-5:
+
+	  C -> cC. , d
+	  C -> cC. , c
+	  C -> cC. , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-9:
+
+	  S -> CC. , $
+   ---------------------------------
+
+
+Go to computations:
+
+	GOTO[0, C] = 1
+	GOTO[0, S] = 2
+	GOTO[0, c] = 3
+	GOTO[0, d] = 4
+	GOTO[1, C] = 9
+	GOTO[1, c] = 3
+	GOTO[1, d] = 4
+	GOTO[3, C] = 5
+	GOTO[3, c] = 3
+	GOTO[3, d] = 4
+	GOTO[6, C] = 5
+	GOTO[6, c] = 3
+	GOTO[6, d] = 4
+
+Actions in parsing table:
+
+	ACTION[0, c] = shift 3
+	ACTION[0, d] = shift 4
+	ACTION[1, c] = shift 3
+	ACTION[1, d] = shift 4
+	ACTION[2, $] = reduce A->S
+	ACTION[3, c] = shift 3
+	ACTION[3, d] = shift 4
+	ACTION[4, $] = reduce C->d
+	ACTION[4, c] = reduce C->d
+	ACTION[4, d] = reduce C->d
+	ACTION[5, $] = reduce C->cC
+	ACTION[5, c] = reduce C->cC
+	ACTION[5, d] = reduce C->cC
+	ACTION[9, $] = reduce S->CC
+
+
