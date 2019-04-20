@@ -1,8 +1,11 @@
 
 
-First for: S -  c d
-First for: CC -  c d
-First for: cC -  c
+First for: E -  ( d
+First for: T+E -  ( d
+First for: T -  ( d
+First for: F*T -  ( d
+First for: F -  ( d
+First for: (E) -  (
 First for: d -  d
 
 Itemsets:
@@ -11,120 +14,353 @@ Itemsets:
    ---------------------------------
 	I-0:
 
-	  A -> .S , $
-	  S -> .CC , $
-	  C -> .d , d
-	  C -> .d , c
-	  C -> .cC , d
-	  C -> .cC , c
+	  A -> .E , $
+	  E -> .T , $
+	  T -> .F , $
+	  F -> .d , $
+	  F -> .(E) , $
+	  T -> .F*T , $
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , $
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
    ---------------------------------
 
 
    ---------------------------------
 	I-1:
 
-	  S -> C.C , $
-	  C -> .d , $
-	  C -> .cC , $
+	  F -> (.E) , +
+	  E -> .T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , )
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+	  F -> (.E) , *
+	  F -> (.E) , $
    ---------------------------------
 
 
    ---------------------------------
 	I-2:
 
-	  A -> S. , $
+	  A -> E. , $
    ---------------------------------
 
 
    ---------------------------------
 	I-3:
 
-	  C -> c.C , c
-	  C -> .d , $
-	  C -> .cC , $
-	  C -> c.C , d
+	  T -> F.*T , +
+	  T -> F. , +
+	  T -> F.*T , $
+	  T -> F. , $
    ---------------------------------
 
 
    ---------------------------------
 	I-4:
 
-	  C -> d. , c
-	  C -> d. , d
+	  E -> T.+E , $
+	  E -> T. , $
    ---------------------------------
 
 
    ---------------------------------
 	I-5:
 
-	  C -> cC. , d
-	  C -> cC. , c
+	  F -> d. , +
+	  F -> d. , *
+	  F -> d. , $
    ---------------------------------
 
 
    ---------------------------------
 	I-6:
 
-	  C -> c.C , $
-	  C -> .d , $
-	  C -> .cC , $
+	  E -> T+.E , $
+	  E -> .T , $
+	  T -> .F , $
+	  F -> .d , $
+	  F -> .(E) , $
+	  T -> .F*T , $
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , $
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
    ---------------------------------
 
 
    ---------------------------------
 	I-7:
 
-	  C -> d. , $
+	  E -> T+E. , $
    ---------------------------------
 
 
    ---------------------------------
 	I-8:
 
-	  C -> cC. , $
+	  T -> F*.T , $
+	  T -> .F , $
+	  F -> .d , $
+	  F -> .(E) , $
+	  T -> .F*T , $
+	  F -> .d , *
+	  F -> .(E) , *
+	  T -> F*.T , +
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
    ---------------------------------
 
 
    ---------------------------------
 	I-9:
 
-	  S -> CC. , $
+	  T -> F*T. , +
+	  T -> F*T. , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-10:
+
+	  F -> (.E) , +
+	  E -> .T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , )
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+	  F -> (.E) , *
+	  F -> (.E) , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-11:
+
+	  F -> (E.) , $
+	  F -> (E.) , *
+	  F -> (E.) , +
+   ---------------------------------
+
+
+   ---------------------------------
+	I-12:
+
+	  T -> F.*T , +
+	  T -> F. , +
+	  T -> F.*T , )
+	  T -> F. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-13:
+
+	  E -> T.+E , )
+	  E -> T. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-14:
+
+	  F -> d. , +
+	  F -> d. , *
+	  F -> d. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-15:
+
+	  E -> T+.E , )
+	  E -> .T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , )
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+   ---------------------------------
+
+
+   ---------------------------------
+	I-16:
+
+	  E -> T+E. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-17:
+
+	  T -> F*.T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  T -> F*.T , +
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+   ---------------------------------
+
+
+   ---------------------------------
+	I-18:
+
+	  T -> F*T. , +
+	  T -> F*T. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-19:
+
+	  F -> (E). , +
+	  F -> (E). , *
+	  F -> (E). , $
+   ---------------------------------
+
+
+   ---------------------------------
+	I-20:
+
+	  F -> (E.) , )
+	  F -> (E.) , *
+	  F -> (E.) , +
+   ---------------------------------
+
+
+   ---------------------------------
+	I-21:
+
+	  F -> (E). , +
+	  F -> (E). , *
+	  F -> (E). , )
    ---------------------------------
 
 
 Go to computations:
 
-	GOTO[0, C] = 1
-	GOTO[0, S] = 2
-	GOTO[0, c] = 3
-	GOTO[0, d] = 4
-	GOTO[1, C] = 9
-	GOTO[1, c] = 6
-	GOTO[1, d] = 7
-	GOTO[3, C] = 5
-	GOTO[3, c] = 6
-	GOTO[3, d] = 7
-	GOTO[6, C] = 8
-	GOTO[6, c] = 6
-	GOTO[6, d] = 7
+	GOTO[0, (] = 1
+	GOTO[0, E] = 2
+	GOTO[0, F] = 3
+	GOTO[0, T] = 4
+	GOTO[0, d] = 5
+	GOTO[1, (] = 10
+	GOTO[1, E] = 11
+	GOTO[1, F] = 12
+	GOTO[1, T] = 13
+	GOTO[1, d] = 14
+	GOTO[3, *] = 8
+	GOTO[4, +] = 6
+	GOTO[6, (] = 1
+	GOTO[6, E] = 7
+	GOTO[6, F] = 3
+	GOTO[6, T] = 4
+	GOTO[6, d] = 5
+	GOTO[8, (] = 1
+	GOTO[8, F] = 3
+	GOTO[8, T] = 9
+	GOTO[8, d] = 5
+	GOTO[10, (] = 10
+	GOTO[10, E] = 20
+	GOTO[10, F] = 12
+	GOTO[10, T] = 13
+	GOTO[10, d] = 14
+	GOTO[11, )] = 19
+	GOTO[12, *] = 17
+	GOTO[13, +] = 15
+	GOTO[15, (] = 10
+	GOTO[15, E] = 16
+	GOTO[15, F] = 12
+	GOTO[15, T] = 13
+	GOTO[15, d] = 14
+	GOTO[17, (] = 10
+	GOTO[17, F] = 12
+	GOTO[17, T] = 18
+	GOTO[17, d] = 14
+	GOTO[20, )] = 21
 
 Actions in parsing table:
 
-	ACTION[0, c] = shift 3
-	ACTION[0, d] = shift 4
-	ACTION[1, c] = shift 6
-	ACTION[1, d] = shift 7
-	ACTION[2, $] = reduce A->S
-	ACTION[3, c] = shift 6
-	ACTION[3, d] = shift 7
-	ACTION[4, c] = reduce C->d
-	ACTION[4, d] = reduce C->d
-	ACTION[5, c] = reduce C->cC
-	ACTION[5, d] = reduce C->cC
-	ACTION[6, c] = shift 6
-	ACTION[6, d] = shift 7
-	ACTION[7, $] = reduce C->d
-	ACTION[8, $] = reduce C->cC
-	ACTION[9, $] = reduce S->CC
+	ACTION[0, (] = shift 1
+	ACTION[0, d] = shift 5
+	ACTION[1, (] = shift 10
+	ACTION[1, d] = shift 14
+	ACTION[2, $] = reduce A->E
+	ACTION[3, $] = reduce T->F
+	ACTION[3, *] = shift 8
+	ACTION[3, +] = reduce T->F
+	ACTION[4, $] = reduce E->T
+	ACTION[4, +] = shift 6
+	ACTION[5, $] = reduce F->d
+	ACTION[5, *] = reduce F->d
+	ACTION[5, +] = reduce F->d
+	ACTION[6, (] = shift 1
+	ACTION[6, d] = shift 5
+	ACTION[7, $] = reduce E->T+E
+	ACTION[8, (] = shift 1
+	ACTION[8, d] = shift 5
+	ACTION[9, $] = reduce T->F*T
+	ACTION[9, +] = reduce T->F*T
+	ACTION[10, (] = shift 10
+	ACTION[10, d] = shift 14
+	ACTION[11, )] = shift 19
+	ACTION[12, )] = reduce T->F
+	ACTION[12, *] = shift 17
+	ACTION[12, +] = reduce T->F
+	ACTION[13, )] = reduce E->T
+	ACTION[13, +] = shift 15
+	ACTION[14, )] = reduce F->d
+	ACTION[14, *] = reduce F->d
+	ACTION[14, +] = reduce F->d
+	ACTION[15, (] = shift 10
+	ACTION[15, d] = shift 14
+	ACTION[16, )] = reduce E->T+E
+	ACTION[17, (] = shift 10
+	ACTION[17, d] = shift 14
+	ACTION[18, )] = reduce T->F*T
+	ACTION[18, +] = reduce T->F*T
+	ACTION[19, $] = reduce F->(E)
+	ACTION[19, *] = reduce F->(E)
+	ACTION[19, +] = reduce F->(E)
+	ACTION[20, )] = shift 21
+	ACTION[21, )] = reduce F->(E)
+	ACTION[21, *] = reduce F->(E)
+	ACTION[21, +] = reduce F->(E)
 
 

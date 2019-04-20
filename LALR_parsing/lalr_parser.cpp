@@ -23,15 +23,11 @@ vector<pair<char, pair<string, char> > > closure(vector<pair<char, pair<string, 
 	
 	for(int i=0; i<kernel_item.size(); i++)s.push(kernel_item[i]);
 
-	vector<bool> added(productions.size(), false);
-	for(int i=0; i<productions.size(); i++){
-		for(int j=0; j<kernel_item.size(); j++){
-			if(make_pair(kernel_item[j].first, kernel_item[j].second.first)==productions[i])added[i]=true;
-		}
-	}
+	set<pair<char, pair<string, char> > > changes;
 
 	while(!s.empty()){
 		pair<char, pair<string, char> > curr = s.top(); s.pop();
+		changes.insert(curr);
 		ret.push_back(curr);
 
 		int pos = -1;
@@ -49,16 +45,15 @@ vector<pair<char, pair<string, char> > > closure(vector<pair<char, pair<string, 
 		for(int i=pos+2; i<curr.second.first.size(); i++)str+=curr.second.first[i];
 		set<char> first_set;
 		find_first(str, first_set);
-		if(first_set.size()==0)first_set.insert('$');
+		if(first_set.size()==0)first_set.insert(curr.second.second);
 		set<char>::iterator it;
 
 		for(int i=0; i<productions.size(); i++){
-			if(productions[i].first==lhs && !added[i]){
+			if(productions[i].first==lhs){
 				for(it=first_set.begin(); it!=first_set.end(); it++){
 					pair<char, string> curr_prod = productions[i];
-					added[i] = true;
 					curr_prod.second.insert(curr_prod.second.begin(), '.');
-					s.push(make_pair(curr_prod.first, make_pair(curr_prod.second, *it)));
+					if(changes.find(make_pair(curr_prod.first, make_pair(curr_prod.second, *it)))==changes.end())s.push(make_pair(curr_prod.first, make_pair(curr_prod.second, *it)));
 				}
 			}
 		}
@@ -205,6 +200,10 @@ void build_actions(){
 						}
 					}
 					else if(tmp[k]=='.' && k==tmp.size()-1){
+						if(itemsets[i][j].first==productions[0].first){
+							action[make_pair(i, '$')] = "accept"; break;
+						}
+
 						pair<char, pair<string, char> > reduce_this = itemsets[i][j];
 						reduce_this.second.first.erase(reduce_this.second.first.find('.'));
 						stringstream ss; ss<<"reduce "<<reduce_this.first<<"->"<<reduce_this.second.first;
@@ -212,6 +211,42 @@ void build_actions(){
 					}
 				}
 			} 
+		}
+	}
+}
+
+void parse(){
+	string w;
+	cin>>w; w+='$';
+	int i=0;
+	stack<int> s; s.push(0);
+
+	cout<<"\n\nParsing actions:\n\n";
+
+	while(1){
+		string acc = action[make_pair(s.top(), w[i])];
+		cout << "\nACTION[" << s.top() << ", " <<w[i]<<"]"<<endl;
+		if(acc[0]=='s'){
+			cout<<acc<<endl;
+			string tmp; 
+			for(int j=6; j<acc.size(); j++)tmp+=acc[j]; 
+			s.push(atoi(tmp.c_str())); i++;
+		}
+		else if(acc[0]=='r'){
+			cout<<acc;
+			char lhs=acc[7]; string rhs;
+			for(int j=10; j<acc.size(); j++)rhs+=acc[j];
+			int popoff=rhs.size();
+
+			while(popoff--)s.pop();
+			s.push(goto1[make_pair(s.top(), lhs)]);
+			cout<<"\t"<<lhs<<"->"<<rhs<<endl;
+		}
+		else if(acc=="accept"){
+			cout<<"Accepted"<<endl; break;
+		}
+		else{
+			cout<<"Error()\n"; break;
 		}
 	}
 }
@@ -263,8 +298,8 @@ int main(){
 
 	for(it2=action.begin(); it2!=action.end(); it2++){
 		fout<<"\tACTION["<<(it2->first).first<<", "<<(it2->first).second<<"] = "<<it2->second<<endl;
-	}
-
+	}	
+	parse();
 	fout<<"\n\n";
 	return 0;
 }

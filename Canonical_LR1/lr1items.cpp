@@ -15,6 +15,7 @@ void build_actions();
 
 ofstream fout("output.txt", ios::out);
 
+/*
 vector<pair<char, pair<string, char> > > closure(vector<pair<char, pair<string, char> > > kernel_item){
 	vector<pair<char, pair<string, char> > > ret;
 
@@ -58,6 +59,53 @@ vector<pair<char, pair<string, char> > > closure(vector<pair<char, pair<string, 
 					added[i] = true;
 					curr_prod.second.insert(curr_prod.second.begin(), '.');
 					s.push(make_pair(curr_prod.first, make_pair(curr_prod.second, *it)));
+				}
+			}
+		}
+	}
+
+	return ret;
+}
+*/
+
+vector<pair<char, pair<string, char> > > closure(vector<pair<char, pair<string, char> > > kernel_item){
+	vector<pair<char, pair<string, char> > > ret;
+
+	stack<pair<char, pair<string, char> > > s;
+	
+	for(int i=0; i<kernel_item.size(); i++)s.push(kernel_item[i]);
+
+	set<pair<char, pair<string, char> > > changes;
+
+	while(!s.empty()){
+		pair<char, pair<string, char> > curr = s.top(); s.pop();
+		changes.insert(curr);
+		ret.push_back(curr);
+
+		int pos = -1;
+		for(int i=0; i<curr.second.first.size(); i++){
+			if(curr.second.first[i]=='.'){
+				pos = i; break;
+			}
+		}
+
+		if(pos==curr.second.first.size()-1)continue;
+
+		char lhs = curr.second.first[pos+1];
+
+		string str;
+		for(int i=pos+2; i<curr.second.first.size(); i++)str+=curr.second.first[i];
+		set<char> first_set;
+		find_first(str, first_set);
+		if(first_set.size()==0)first_set.insert(curr.second.second);
+		set<char>::iterator it;
+
+		for(int i=0; i<productions.size(); i++){
+			if(productions[i].first==lhs){
+				for(it=first_set.begin(); it!=first_set.end(); it++){
+					pair<char, string> curr_prod = productions[i];
+					curr_prod.second.insert(curr_prod.second.begin(), '.');
+					if(changes.find(make_pair(curr_prod.first, make_pair(curr_prod.second, *it)))==changes.end())s.push(make_pair(curr_prod.first, make_pair(curr_prod.second, *it)));
 				}
 			}
 		}

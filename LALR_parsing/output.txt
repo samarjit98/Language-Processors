@@ -1,8 +1,11 @@
 
 
-First for: S -  c d
-First for: CC -  c d
-First for: cC -  c
+First for: E -  ( d
+First for: T+E -  ( d
+First for: T -  ( d
+First for: F*T -  ( d
+First for: F -  ( d
+First for: (E) -  (
 First for: d -  d
 
 Itemsets:
@@ -11,100 +14,278 @@ Itemsets:
    ---------------------------------
 	I-0:
 
-	  A -> .S , $
-	  S -> .CC , $
-	  C -> .d , d
-	  C -> .d , c
-	  C -> .cC , d
-	  C -> .cC , c
+	  A -> .E , $
+	  E -> .T , $
+	  T -> .F , $
+	  F -> .d , $
+	  F -> .(E) , $
+	  T -> .F*T , $
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , $
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
    ---------------------------------
 
 
    ---------------------------------
 	I-1:
 
-	  S -> C.C , $
-	  C -> .d , $
-	  C -> .cC , $
+	  F -> (.E) , +
+	  E -> .T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , )
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+	  F -> (.E) , *
+	  F -> (.E) , $
+	  F -> (.E) , +
+	  E -> .T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , )
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+	  F -> (.E) , *
+	  F -> (.E) , )
    ---------------------------------
 
 
    ---------------------------------
 	I-2:
 
-	  A -> S. , $
+	  A -> E. , $
    ---------------------------------
 
 
    ---------------------------------
 	I-3:
 
-	  C -> c.C , c
-	  C -> .d , $
-	  C -> .cC , $
-	  C -> c.C , d
-	  C -> c.C , $
-	  C -> .d , $
-	  C -> .cC , $
+	  T -> F.*T , +
+	  T -> F. , +
+	  T -> F.*T , $
+	  T -> F. , $
+	  T -> F.*T , +
+	  T -> F. , +
+	  T -> F.*T , )
+	  T -> F. , )
    ---------------------------------
 
 
    ---------------------------------
 	I-4:
 
-	  C -> d. , c
-	  C -> d. , d
-	  C -> d. , $
+	  E -> T.+E , $
+	  E -> T. , $
+	  E -> T.+E , )
+	  E -> T. , )
    ---------------------------------
 
 
    ---------------------------------
 	I-5:
 
-	  C -> cC. , d
-	  C -> cC. , c
-	  C -> cC. , $
+	  F -> d. , +
+	  F -> d. , *
+	  F -> d. , $
+	  F -> d. , +
+	  F -> d. , *
+	  F -> d. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-6:
+
+	  E -> T+.E , $
+	  E -> .T , $
+	  T -> .F , $
+	  F -> .d , $
+	  F -> .(E) , $
+	  T -> .F*T , $
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , $
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+	  E -> T+.E , )
+	  E -> .T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  E -> .T+E , )
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+   ---------------------------------
+
+
+   ---------------------------------
+	I-7:
+
+	  E -> T+E. , $
+	  E -> T+E. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-8:
+
+	  T -> F*.T , $
+	  T -> .F , $
+	  F -> .d , $
+	  F -> .(E) , $
+	  T -> .F*T , $
+	  F -> .d , *
+	  F -> .(E) , *
+	  T -> F*.T , +
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
+	  T -> F*.T , )
+	  T -> .F , )
+	  F -> .d , )
+	  F -> .(E) , )
+	  T -> .F*T , )
+	  F -> .d , *
+	  F -> .(E) , *
+	  T -> F*.T , +
+	  T -> .F , +
+	  F -> .d , +
+	  F -> .(E) , +
+	  T -> .F*T , +
    ---------------------------------
 
 
    ---------------------------------
 	I-9:
 
-	  S -> CC. , $
+	  T -> F*T. , +
+	  T -> F*T. , $
+	  T -> F*T. , +
+	  T -> F*T. , )
+   ---------------------------------
+
+
+   ---------------------------------
+	I-11:
+
+	  F -> (E.) , $
+	  F -> (E.) , *
+	  F -> (E.) , +
+	  F -> (E.) , )
+	  F -> (E.) , *
+	  F -> (E.) , +
+   ---------------------------------
+
+
+   ---------------------------------
+	I-19:
+
+	  F -> (E). , +
+	  F -> (E). , *
+	  F -> (E). , $
+	  F -> (E). , +
+	  F -> (E). , *
+	  F -> (E). , )
    ---------------------------------
 
 
 Go to computations:
 
-	GOTO[0, C] = 1
-	GOTO[0, S] = 2
-	GOTO[0, c] = 3
-	GOTO[0, d] = 4
-	GOTO[1, C] = 9
-	GOTO[1, c] = 3
-	GOTO[1, d] = 4
-	GOTO[3, C] = 5
-	GOTO[3, c] = 3
-	GOTO[3, d] = 4
-	GOTO[6, C] = 5
-	GOTO[6, c] = 3
-	GOTO[6, d] = 4
+	GOTO[0, (] = 1
+	GOTO[0, E] = 2
+	GOTO[0, F] = 3
+	GOTO[0, T] = 4
+	GOTO[0, d] = 5
+	GOTO[1, (] = 1
+	GOTO[1, E] = 11
+	GOTO[1, F] = 3
+	GOTO[1, T] = 4
+	GOTO[1, d] = 5
+	GOTO[3, *] = 8
+	GOTO[4, +] = 6
+	GOTO[6, (] = 1
+	GOTO[6, E] = 7
+	GOTO[6, F] = 3
+	GOTO[6, T] = 4
+	GOTO[6, d] = 5
+	GOTO[8, (] = 1
+	GOTO[8, F] = 3
+	GOTO[8, T] = 9
+	GOTO[8, d] = 5
+	GOTO[10, (] = 1
+	GOTO[10, E] = 11
+	GOTO[10, F] = 3
+	GOTO[10, T] = 4
+	GOTO[10, d] = 5
+	GOTO[11, )] = 19
+	GOTO[12, *] = 8
+	GOTO[13, +] = 6
+	GOTO[15, (] = 1
+	GOTO[15, E] = 7
+	GOTO[15, F] = 3
+	GOTO[15, T] = 4
+	GOTO[15, d] = 5
+	GOTO[17, (] = 1
+	GOTO[17, F] = 3
+	GOTO[17, T] = 9
+	GOTO[17, d] = 5
+	GOTO[20, )] = 19
 
 Actions in parsing table:
 
-	ACTION[0, c] = shift 3
-	ACTION[0, d] = shift 4
-	ACTION[1, c] = shift 3
-	ACTION[1, d] = shift 4
-	ACTION[2, $] = reduce A->S
-	ACTION[3, c] = shift 3
-	ACTION[3, d] = shift 4
-	ACTION[4, $] = reduce C->d
-	ACTION[4, c] = reduce C->d
-	ACTION[4, d] = reduce C->d
-	ACTION[5, $] = reduce C->cC
-	ACTION[5, c] = reduce C->cC
-	ACTION[5, d] = reduce C->cC
-	ACTION[9, $] = reduce S->CC
+	ACTION[0, (] = shift 1
+	ACTION[0, d] = shift 5
+	ACTION[1, (] = shift 1
+	ACTION[1, d] = shift 5
+	ACTION[2, $] = accept
+	ACTION[3, $] = reduce T->F
+	ACTION[3, )] = reduce T->F
+	ACTION[3, *] = shift 8
+	ACTION[3, +] = reduce T->F
+	ACTION[4, $] = reduce E->T
+	ACTION[4, )] = reduce E->T
+	ACTION[4, +] = shift 6
+	ACTION[5, $] = reduce F->d
+	ACTION[5, )] = reduce F->d
+	ACTION[5, *] = reduce F->d
+	ACTION[5, +] = reduce F->d
+	ACTION[6, (] = shift 1
+	ACTION[6, d] = shift 5
+	ACTION[7, $] = reduce E->T+E
+	ACTION[7, )] = reduce E->T+E
+	ACTION[8, (] = shift 1
+	ACTION[8, d] = shift 5
+	ACTION[9, $] = reduce T->F*T
+	ACTION[9, )] = reduce T->F*T
+	ACTION[9, +] = reduce T->F*T
+	ACTION[11, )] = shift 19
+	ACTION[19, $] = reduce F->(E)
+	ACTION[19, )] = reduce F->(E)
+	ACTION[19, *] = reduce F->(E)
+	ACTION[19, +] = reduce F->(E)
 
 
