@@ -221,32 +221,33 @@ void parse(){
 	int i=0;
 	stack<int> s; s.push(0);
 
-	cout<<"\n\nParsing actions:\n\n";
+	fout<<"\n\nParsing actions:\n\n";
+	fout<<"String is:"<<w<<"\n\n";
 
 	while(1){
 		string acc = action[make_pair(s.top(), w[i])];
-		cout << "\nACTION[" << s.top() << ", " <<w[i]<<"]"<<endl;
+		fout << "\nACTION[" << s.top() << ", " <<w[i]<<"]"<<endl;
 		if(acc[0]=='s'){
-			cout<<acc<<endl;
+			fout<<acc<<endl;
 			string tmp; 
 			for(int j=6; j<acc.size(); j++)tmp+=acc[j]; 
 			s.push(atoi(tmp.c_str())); i++;
 		}
 		else if(acc[0]=='r'){
-			cout<<acc;
+			fout<<acc;
 			char lhs=acc[7]; string rhs;
 			for(int j=10; j<acc.size(); j++)rhs+=acc[j];
 			int popoff=rhs.size();
 
 			while(popoff--)s.pop();
 			s.push(goto1[make_pair(s.top(), lhs)]);
-			cout<<"\t"<<lhs<<"->"<<rhs<<endl;
+			fout<<endl;
 		}
 		else if(acc=="accept"){
-			cout<<"Accepted"<<endl; break;
+			fout<<"Accepted"<<endl; break;
 		}
 		else{
-			cout<<"Error()\n"; break;
+			fout<<"Error()\n"; break;
 		}
 	}
 }
@@ -301,6 +302,7 @@ int main(){
 	}	
 	parse();
 	fout<<"\n\n";
+	fout.close();
 	return 0;
 }
 
