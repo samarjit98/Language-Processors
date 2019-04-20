@@ -231,13 +231,54 @@ void build_actions(){
 					}
 				}
 				else if(tmp[k]=='.' && k==tmp.size()-1){
-					pair<char, pair<string, char> > reduce_this = itemsets[i][j];
-					reduce_this.second.first.erase(reduce_this.second.first.find('.'));
-					stringstream ss; ss<<"reduce "<<reduce_this.first<<"->"<<reduce_this.second.first;
-					action[make_pair(i, reduce_this.second.second)] = ss.str();
+					if(itemsets[i][j].first==productions[0].first){
+                        action[make_pair(i, '$')] = "accept"; break;
+                    }
+
+                    pair<char, pair<string, char> > reduce_this = itemsets[i][j];
+                    reduce_this.second.first.erase(reduce_this.second.first.find('.'));
+                    stringstream ss; ss<<"reduce "<<reduce_this.first<<"->"<<reduce_this.second.first;
+                    action[make_pair(i, reduce_this.second.second)] = ss.str();
 				}
 			}
 		} 
+	}
+}
+
+void parse(){
+	string w;
+	cin>>w; w+='$';
+	int i=0;
+	stack<int> s; s.push(0);
+
+	fout<<"\n\nParsing actions:\n\n";
+	fout<<"String is:"<<w<<"\n\n";
+
+	while(1){
+		string acc = action[make_pair(s.top(), w[i])];
+		fout << "\nACTION[" << s.top() << ", " <<w[i]<<"]"<<endl;
+		if(acc[0]=='s'){
+			fout<<acc<<endl;
+			string tmp; 
+			for(int j=6; j<acc.size(); j++)tmp+=acc[j]; 
+			s.push(atoi(tmp.c_str())); i++;
+		}
+		else if(acc[0]=='r'){
+			fout<<acc;
+			char lhs=acc[7]; string rhs;
+			for(int j=10; j<acc.size(); j++)rhs+=acc[j];
+			int popoff=rhs.size();
+
+			while(popoff--)s.pop();
+			s.push(goto1[make_pair(s.top(), lhs)]);
+			fout<<endl;
+		}
+		else if(acc=="accept"){
+			fout<<"Accepted"<<endl; break;
+		}
+		else{
+			fout<<"Error()\n"; break;
+		}
 	}
 }
 
@@ -288,6 +329,8 @@ int main(){
 	}
 
 	fout<<"\n\n";
+	parse();
+	fout.close();
 	return 0;
 }
 

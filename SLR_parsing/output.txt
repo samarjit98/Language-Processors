@@ -159,7 +159,7 @@ Actions in parsing table:
 	ACTION[0, d] = shift 5
 	ACTION[1, (] = shift 1
 	ACTION[1, d] = shift 5
-	ACTION[2, $] = reduce A->E
+	ACTION[2, $] = accept
 	ACTION[3, $] = reduce T->F
 	ACTION[3, )] = reduce T->F
 	ACTION[3, *] = shift 8
@@ -187,3 +187,51 @@ Actions in parsing table:
 	ACTION[11, +] = reduce F->(E)
 
 
+
+
+Parsing actions:
+
+String is:d+d*d$
+
+
+ACTION[0, d]
+shift 5
+
+ACTION[5, +]
+reduce F->d
+
+ACTION[3, +]
+reduce T->F
+
+ACTION[4, +]
+shift 6
+
+ACTION[6, d]
+shift 5
+
+ACTION[5, *]
+reduce F->d
+
+ACTION[3, *]
+shift 8
+
+ACTION[8, d]
+shift 5
+
+ACTION[5, $]
+reduce F->d
+
+ACTION[3, $]
+reduce T->F
+
+ACTION[9, $]
+reduce T->F*T
+
+ACTION[4, $]
+reduce E->T
+
+ACTION[7, $]
+reduce E->T+E
+
+ACTION[2, $]
+Accepted
