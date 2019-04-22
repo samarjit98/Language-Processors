@@ -1,0 +1,89 @@
+
+
+Parsing actions for d*d+d*d$:
+
+	STACK STATE: $ 
+	RELATIONSHIP: d and $ is .>
+	d added to stack.
+
+	STACK STATE: $ d 
+	RELATIONSHIP: * and d is <.
+	Popping state..
+	RELATIONSHIP: d and $ is .>
+	STACK STATE: $ 
+
+	STACK STATE: $ 
+	RELATIONSHIP: * and $ is .>
+	* added to stack.
+
+	STACK STATE: $ * 
+	RELATIONSHIP: d and * is .>
+	d added to stack.
+
+	STACK STATE: $ * d 
+	RELATIONSHIP: + and d is <.
+	Popping state..
+	RELATIONSHIP: d and * is .>
+	STACK STATE: $ * 
+
+	STACK STATE: $ * 
+	RELATIONSHIP: + and * is <.
+	Popping state..
+	RELATIONSHIP: * and $ is .>
+	STACK STATE: $ 
+
+	STACK STATE: $ 
+	RELATIONSHIP: + and $ is .>
+	+ added to stack.
+
+	STACK STATE: $ + 
+	RELATIONSHIP: d and + is .>
+	d added to stack.
+
+	STACK STATE: $ + d 
+	RELATIONSHIP: * and d is <.
+	Popping state..
+	RELATIONSHIP: d and + is .>
+	STACK STATE: $ + 
+
+	STACK STATE: $ + 
+	RELATIONSHIP: * and + is .>
+	* added to stack.
+
+	STACK STATE: $ + * 
+	RELATIONSHIP: d and * is .>
+	d added to stack.
+
+	STACK STATE: $ + * d 
+	RELATIONSHIP: $ and d is <.
+	Popping state..
+	RELATIONSHIP: d and * is .>
+	STACK STATE: $ + * 
+
+	STACK STATE: $ + * 
+	RELATIONSHIP: $ and * is <.
+	Popping state..
+	RELATIONSHIP: * and + is .>
+	STACK STATE: $ + 
+
+	STACK STATE: $ + 
+	RELATIONSHIP: $ and + is <.
+	Popping state..
+	RELATIONSHIP: + and $ is .>
+	STACK STATE: $ 
+
+	STACK STATE: $ 
+	RELATIONSHIP: $ and $ is .>
+	Parsing complete!
+
+
+Derivation sequence:
+
+	d*d+d*d$
+	E*d+d*d$
+	E*E+d*d$
+	E+d*d$
+	E+E*d$
+	E+E*E$
+	E+E$
+	E$
