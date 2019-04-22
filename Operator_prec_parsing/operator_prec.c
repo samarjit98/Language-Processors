@@ -4,6 +4,8 @@
 
 char table[1000][1000][5];
 char operators[100]; int num_op = 0;
+char derivation_sequence[100][100]; int curr_der = 0;
+char word_now[100]; int wip;
 
 void init(){
 	printf("Enter number of operators:");
@@ -20,13 +22,32 @@ void init(){
 	} 
 }
 
+void replace(char c){
+	int i = wip-1;
+	while(i>=0){
+		if(word_now[i] == c)break; 
+		i--;
+	}
+
+	if(word_now[i]=='d')word_now[i] = 'E';
+	else{
+		word_now[i-1] = 'E';
+		for(int j=i+2; j<strlen(word_now); j++)word_now[j-2] = word_now[j];
+
+		word_now[strlen(word_now)-2] = '\0';
+		wip = wip - 2;
+	}
+	strcpy(derivation_sequence[curr_der], word_now); curr_der++;
+}
+
 void parse(){
 	char word[100];
 	printf("Enter word to be parsed:"); scanf("%s", word); strcat(word, "$");
+	strcpy(word_now, word);
 
 	char stack[100]; int top = 0;
 	stack[top] = '$'; top++;
-	int ip = 0;
+	int ip = 0; wip = 0;
 
 	printf("\n\nParsing actions:\n\n");
 	while(1){
@@ -43,13 +64,14 @@ void parse(){
 		}
 		else if(strcmp(table[(int)word[ip]][(int)stack[top-1]], ".>")==0 || strcmp(table[(int)word[ip]][(int)stack[top-1]], ".=")==0){
 			stack[top] = word[ip]; top++;
-			printf("\t%c added to stack.\n", word[ip]); ip++;
+			printf("\t%c added to stack.\n", word[ip]); ip++; wip++;
 		}
 		else if(strcmp(table[(int)word[ip]][(int)stack[top-1]], "<.")==0){
 			char c;
 			printf("\tPopping state..\n");
 			do{
 				c = stack[top-1]; top--;
+				replace(c);
 
 				printf("\tRELATIONSHIP: %c and %c is ", c, stack[top-1]);
 				printf("%s", table[(int)c][(int)stack[top-1]]);
@@ -65,6 +87,8 @@ void parse(){
 		}
 		printf("\n");
 	}
+	printf("\n\nDerivation sequence:\n\n");
+	for(int i=0; i<curr_der; i++)printf("\t%s\n", derivation_sequence[i]);
 }
 
 int main(int argc, char* argv[]){
@@ -155,5 +179,14 @@ Parsing actions:
 	STACK STATE: $ 
 	RELATIONSHIP: $ and $ is .>
 	Parsing complete!
+
+
+Derivation sequence:
+
+	E+d*d$
+	E+E*d$
+	E+E*E$
+	E+E$
+	E$
 
 */
