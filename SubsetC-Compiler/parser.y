@@ -173,10 +173,10 @@ BOOL: BOOL AND BOOL {
 		string place0 = new_temp();
 		strcpy($$->place, place0.c_str());
 		fout << "if " << tmp1 << " " << tmp << " " << tmp2 << " goto " << false_label << endl;
-		fout << place0 << " = 1" << endl;
+		fout << place0 << " = 0" << endl;
 		fout << "goto " << end_label << endl;
 		fout << false_label << ": ";
-		fout << place0 << " = 0" << endl;
+		fout << place0 << " = 1" << endl;
 		fout << end_label << ": ";
 	}
 

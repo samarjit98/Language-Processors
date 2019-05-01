@@ -1,21 +1,21 @@
 a = 10
 b = 20
 if a == 10 goto _l0
-_t0 = 1
+_t0 = 0
 goto _l1
-_l0: _t0 = 0
+_l0: _t0 = 1
 _l1: if _t0 == 0 goto _l2
 a = 5
 _l2: if b == 20 goto _l3
-_t1 = 1
+_t1 = 0
 goto _l4
-_l3: _t1 = 0
+_l3: _t1 = 1
 _l4: if _t1 == 0 goto _l5
 b = 10
 _l5: _l6: if a > b goto _l7
-_t2 = 1
+_t2 = 0
 goto _l8
-_l7: _t2 = 0
+_l7: _t2 = 1
 _l8: if _t2 == 0 goto _l9
 _t3 = b + 2
 b = _t3
@@ -25,9 +25,9 @@ _t5 = _t4 + 10
 _t6 = 9 * b
 _t7 = 7 + _t6
 if _t5 < _t7 goto _l11
-_t8 = 1
+_t8 = 0
 goto _l12
-_l11: _t8 = 0
+_l11: _t8 = 1
 _l12: if _t8 == 0 goto _l13
 _t9 = 4 * b
 _t10 = a + _t9
