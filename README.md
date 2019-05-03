@@ -10,6 +10,8 @@ The following parsers have been implemented and tested on standard grammars:
   5. LALR parsing by merging states
   6. Operator precedence parsing
   
+An extremely simple intermediate code generator has been implemented using Flex and Bison for a subset of C language (declarations, assignment statements, arithmetic expressions, boolean expressions and simple control flow blocks).
+  
 Please follow the book "Compilers: Principles, Tools and Techniques, by Aho, Ullman, Lam and Sethi" for theoretical reference.
 
 Made with lots of blood, sweat, caffeine and </>. :p (Never liked Compilers at all!!)
